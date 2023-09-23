@@ -1,6 +1,6 @@
 import { styled } from 'styled-components';
 
-export const HeaderElement = styled.header`
+const HeaderElement = styled.header`
   width: 100%;
   padding: 24px;
   display: flex;
@@ -11,12 +11,12 @@ export const HeaderElement = styled.header`
   box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.5);
 `;
 
-export const FormElement = styled.form`
+const FormElement = styled.form`
   display: flex;
   align-items: center;
 `;
 
-export const SearchButton = styled.button`
+const SearchButton = styled.button`
   margin-right: -5px;
   width: 60px;
   height: 60px;
@@ -30,7 +30,7 @@ export const SearchButton = styled.button`
   }
 `;
 
-export const InputElement = styled.input`
+const InputElement = styled.input`
   width: 400px;
   height: 60px;
   padding: 0 10px;
@@ -42,3 +42,5 @@ export const InputElement = styled.input`
     font-size: 20px;
   }
 `;
+
+export { HeaderElement, FormElement, SearchButton, InputElement };

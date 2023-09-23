@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import {
   HeaderElement,
   FormElement,
@@ -6,43 +6,39 @@ import {
   InputElement,
 } from './Searchbar.styled';
 
-export class Searchbar extends Component {
-  state = {
-    value: '',
+export const Searchbar = ({ onSubmit }) => {
+  const [value, setValue] = useState('');
+
+  const handleChange = ({ target: { value } }) => {
+    setValue(value.trim());
   };
 
-  handleChange = ({ target: { value } }) => {
-    this.setState({ value: value.trim() });
-  };
-
-  handleSubmit = evt => {
+  const handleSubmit = evt => {
     evt.preventDefault();
-    if (!this.state.value) {
+    if (!value) {
       return alert('Please enter your request!');
     }
-    this.props.onSubmit(this.state.value);
-    this.setState({ value: '' });
+    onSubmit(value);
+    setValue('');
   };
 
-  render() {
-    return (
-      <HeaderElement className="searchbar">
-        <FormElement className="form" onSubmit={this.handleSubmit}>
-          <SearchButton type="submit" className="button">
-            <span className="button-label">&#128269;</span>
-          </SearchButton>
+  return (
+    <HeaderElement className="searchbar">
+      <FormElement className="form" onSubmit={handleSubmit}>
+        <SearchButton type="submit" className="button">
+          <span className="button-label">&#128269;</span>
+        </SearchButton>
 
-          <InputElement
-            className="input"
-            type="text"
-            autoComplete="off"
-            autoFocus
-            placeholder="Search images and photos"
-            onChange={this.handleChange}
-            value={this.state.value}
-          />
-        </FormElement>
-      </HeaderElement>
-    );
-  }
-}
+        <InputElement
+          className="input"
+          type="text"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search images and photos"
+          onChange={handleChange}
+          value={value}
+        />
+      </FormElement>
+    </HeaderElement>
+  );
+};
