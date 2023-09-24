@@ -18,13 +18,6 @@ export const App = () => {
   const [largeImage, setLargeImage] = useState(null);
   const [tag, setTag] = useState('');
 
-  // componentDidUpdate(_, prevState) {
-  //   const { page, query } = this.state;
-  //   if (page !== prevState.page || query !== prevState.query) {
-  //     this.getPhotos(query, page);
-  //   }
-  // }
-
   useEffect(() => {
     const getPhotos = async (query, page) => {
       setIsLoading(true);
@@ -49,7 +42,6 @@ export const App = () => {
   }, [query, page]);
 
   const onSubmit = query => {
-    // this.setState({ query, page: 1, images: [] });
     setQuery(query);
     setPage(1);
     setImages([]);
@@ -60,21 +52,17 @@ export const App = () => {
   };
 
   const onOpenModal = (largeImage, tag) => {
-    // this.setState({ isOpenModal: true, largeImage, tag });
     setIsOpenModal(true);
     setLargeImage(largeImage);
     setTag(tag);
   };
 
   const onCloseModal = () => {
-    // this.setState({ isOpenModal: false, largeImage: null, tag: '' });
     setIsOpenModal(false);
     setLargeImage(null);
     setTag('');
   };
 
-  // const { isLoading, error, images, isOpenModal, largeImage, tag, total } =
-  //   this.state;
   const allPages = total / images.length;
   return (
     <>
